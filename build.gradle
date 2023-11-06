@@ -1,0 +1,215 @@
+buildscript {
+    ext {
+        // queryDsl
+        queryDslVersion = "5.0.0"
+    }
+}
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.7.13'
+
+    id 'jacoco'
+
+    // queryDsl
+    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+// test jacoco 관련 파일들
+
+tasks.named('test') {
+    useJUnitPlatform()
+    finalizedBy jacocoTestCoverageVerification // Add this line to execute jacocoTestCoverageVerification after the test
+    finalizedBy jacocoTestReport // Add this line to execute jacocoTestReport after the test
+}
+
+
+// Report config
+jacocoTestReport {
+    reports {
+        html.enabled true
+        xml.enabled false
+        csv.enabled false
+
+// 리포트의 저장 경로를 설정합니다.
+        html.destination file("jacoco/jacocoHtml")
+        xml.destination file("jacoco/jacoco.xml")
+    }
+
+    excludedClassFilesForReport(classDirectories)
+
+}
+
+// 커버리지 범위 및 퍼센테이지 설정
+// covereratio 테스트코드로 커버된 브래친의 비율
+// counter 어떤 지표를 사용하여 커버리지를 측정할지
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            element = 'CLASS'
+            includes = ['com.tbfp.teamplannerbe.domain.**.service.*'] // Specify your method name here
+            limit {
+                counter = 'BRANCH'
+                value = 'COVEREDRATIO'
+                minimum = 0.40
+            }
+        }
+    }
+}
+
+// jacoco Report에서 제외하기
+private excludedClassFilesForReport(classDirectories) {
+
+
+
+    classDirectories.setFrom(
+            files(classDirectories.files.collect {
+                fileTree(dir: it, exclude: [
+                        "**/Q*",
+                        "**/*Dto*",
+                        "**/*Application*",
+                        "**/*Config*",
+                        "**/*dto*",
+                        "**/*entity*",
+                        "**/*config*",
+                        "**/*common*/",
+                        "**/*controller*",
+                        "**/*repository*",
+                        "**/*condition*",
+                        "**/*crawler*"
+                ])
+            })
+    )
+}
+
+
+
+group = 'com.tbfp'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '11'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    querydsl.extendsFrom compileClasspath
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+
+//    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+//    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    // flyway
+    implementation 'org.flywaydb:flyway-core'
+    implementation 'org.flywaydb:flyway-mysql'
+
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+
+    // jwt
+    implementation 'com.auth0:java-jwt:4.4.0'
+
+
+    // swagger
+    implementation group: 'org.springdoc', name: 'springdoc-openapi-ui', version: '1.6.12'
+    // queryDsl
+    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'org.jetbrains:annotations:24.0.0'
+    annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
+
+
+    //    jasypt
+    implementation 'com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.3'
+
+
+    // Selenium WebDriver
+    implementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+
+    // ChromeDriver
+    implementation 'io.github.bonigarcia:webdrivermanager:5.1.1'
+
+
+    //javamail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework:spring-context:5.3.19'
+
+    //validation
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '2.7.13'
+
+    //jsoup
+    implementation 'org.jsoup:jsoup:1.14.3'
+
+    // json-simple
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1'
+    //gson
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    //json object 를 사용하기 위해
+    implementation 'org.json:json:20210307'
+
+    // redis
+    implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+
+    // redisson
+    implementation 'org.redisson:redisson-spring-boot-starter:3.17.7'
+
+    //dynamodb
+    implementation 'io.github.boostchicken:spring-data-dynamodb:5.2.3'
+
+
+    //javamail
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
+    implementation 'org.springframework:spring-context:5.3.19'
+
+    //actuator
+    implementation "org.springframework.boot:spring-boot-starter-actuator"
+
+    //aws
+    implementation 'com.amazonaws:aws-java-sdk:1.11.64'
+
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+
+    // websocket
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+//    runtimeOnly 'com.h2database:h2'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+
+
+
+//querydsl 추가 시작
+def querydslDir = "$buildDir/generated/querydsl"
+querydsl {
+    jpa = true
+    querydslSourcesDir = querydslDir
+}
+sourceSets {
+    main.java.srcDir querydslDir
+}
+configurations {
+    querydsl.extendsFrom compileClasspath
+}
+compileQuerydsl {
+    options.annotationProcessorPath = configurations.querydsl
+}
+//querydsl 추가 끝
