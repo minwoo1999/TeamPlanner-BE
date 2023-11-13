@@ -12,8 +12,8 @@
 
 # 2. Architecture
 ## 2-1. AWS Architecture
+<img width="427" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/33a9c4d8-5cba-4e3a-b6ce-9e113d7fea81">
 
-<img width="423" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/a3e04ab3-f3e2-499a-bac3-bfa8f1818e08">
 
 
 ## 2-2. CI/CD Acritecture
