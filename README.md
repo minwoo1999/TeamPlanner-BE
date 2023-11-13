@@ -12,22 +12,8 @@
 
 # 2. Architecture
 ## 2-1. AWS Architecture
-### V1
 
-<img width="894" alt="image" src="https://github.com/SWM-304/TeamPlanner-BE/assets/79193811/678d8e71-be83-40e1-b0b8-2dbdfbfb2798">
-
-
-### V2
-
-<img width="1042" alt="image" src="https://github.com/SWM-304/TeamPlanner-BE/assets/79193811/5baa9553-079f-448e-a6c1-2aa35fe19e23">
-
-### V3
-
-<img width="1161" alt="image" src="https://github.com/SWM-304/TeamPlanner-BE/assets/79193811/264bf88f-072d-4d5b-9fc0-5c5caabffeb0">
-
-### V4
-
-<img width="916" alt="image" src="https://github.com/SWM-304/TeamPlanner-BE/assets/79193811/dad460df-1cdf-4730-96e5-70bf5b97525d">
+<img width="423" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/a3e04ab3-f3e2-499a-bac3-bfa8f1818e08">
 
 
 ## 2-2. CI/CD Acritecture
