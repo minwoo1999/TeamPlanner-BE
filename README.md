@@ -18,7 +18,7 @@
 
 ## 2-2. CI/CD Acritecture
 
-<img width="587" alt="image" src="https://github.com/SWM-304/TeamPlanner-BE/assets/79193811/005ef2a2-c6d3-4375-b06e-f510fd629412">
+<img width="583" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/1d6d6e91-988a-43e9-a93b-97da81016c8c">
 
 
 
