@@ -44,7 +44,11 @@ Postman을 이용하여, Development 환경과 Deployment 환경 모두에서 AP
 ArgoCD Application Detail Tree
 <img width="1507" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/4e0b02c1-9b24-4b56-94e1-a1c8ead79ad3">
 
-# 4. 수행 방법 및 프로젝트 관리
+# 4.프로필 추천
+<img width="965" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/9f294b9e-02d0-413a-adc0-a51587d1a1aa">
+
+
+# 5. 수행 방법 및 프로젝트 관리
 ## 3-1. 개발 프로세스
 <img width="997" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/5db52c47-c183-4a32-90a9-e015f0f13361">
 
