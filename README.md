@@ -49,7 +49,7 @@ ArgoCD Application Detail Tree
 
 
 # 5. 수행 방법 및 프로젝트 관리
-## 3-1. 개발 프로세스
+## 5-1. 개발 프로세스
 <img width="997" alt="image" src="https://github.com/minwoo1999/TeamPlanner-BE/assets/79193811/5db52c47-c183-4a32-90a9-e015f0f13361">
 
 
